@@ -1,6 +1,6 @@
-import { CSRF_COOKIE, ensureCsrfCookie } from '@/utils/cookies.js'
-import { AppError } from '@/utils/response.js'
 import type { NextFunction, Request, Response } from 'express'
+import { CSRF_COOKIE, ensureCsrfCookie } from '../utils/cookies.js'
+import { AppError } from '../utils/response.js'
 
 const UNSAFE_METHODS = new Set(['POST', 'PUT', 'PATCH', 'DELETE'])
 
@@ -31,7 +31,7 @@ export const csrfProtection = (
     return next()
   }
 
-  const cookieToken = req.cookies[CSRF_COOKIE]
+  const cookieToken = req.cookies?.[CSRF_COOKIE]
   const headerToken =
     (req.headers['x-xsrf-token'] as string | undefined) ??
     (req.headers['csrf-token'] as string | undefined)

@@ -1,8 +1,8 @@
-import { prisma } from '@/config/db.js'
-import { ACCESS_COOKIE } from '@/utils/cookies.js'
-import { verifyAccessToken } from '@/utils/jwt.js'
-import { AppError } from '@/utils/response.js'
 import type { NextFunction, Request, Response } from 'express'
+import { prisma } from '../config/db.js'
+import { ACCESS_COOKIE } from '../utils/cookies.js'
+import { verifyAccessToken } from '../utils/jwt.js'
+import { AppError } from '../utils/response.js'
 
 export const authenticate = async (
   req: Request,
